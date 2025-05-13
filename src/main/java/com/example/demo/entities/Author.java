@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -70,7 +70,7 @@ public class Author {
     if (getClass() != obj.getClass()) return false;
     Author other = (Author) obj;
     if (id == null) {
-      if (other.id != null) return false;
+      // if (other.id != null) return false;
     } else if (!id.equals(other.id)) return false;
     return true;
   }
