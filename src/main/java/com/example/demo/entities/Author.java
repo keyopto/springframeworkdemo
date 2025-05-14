@@ -82,4 +82,12 @@ public class Author {
     } else if (!id.equals(other.id)) return false;
     return true;
   }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 }
