@@ -17,7 +17,7 @@ public class Book {
 
   public Book() {}
 
-  private String name;
+  private String title;
   private Long nbPages;
 
   @ManyToMany(mappedBy = "books")
@@ -34,7 +34,7 @@ public class Book {
   }
 
   public Book(String name, Long nbPages) {
-    this.name = name;
+    this.title = name;
     this.nbPages = nbPages;
   }
 
@@ -46,12 +46,12 @@ public class Book {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getTitle() {
+    return title;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setTitle(String name) {
+    this.title = name;
   }
 
   public Long getNbPages() {
