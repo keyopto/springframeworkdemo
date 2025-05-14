@@ -5,47 +5,51 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Author {
+public class Publisher {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  private String firstName;
-  private String lastName;
+  private String name;
+  private String address;
 
-  @ManyToMany
-  @JoinTable(
-      name = "author_book",
-      joinColumns = @JoinColumn(name = "book_id"),
-      inverseJoinColumns = @JoinColumn(name = "author_id"))
+  @OneToMany
+  @JoinColumn(name = "publisher_id")
   private Set<Book> books = new HashSet<>();
 
-  public Author(String firstName, String lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
+  public Publisher(String name, String address) {
+    this.name = name;
+    this.address = address;
   }
 
-  public String getFirstName() {
-    return firstName;
+  public Long getId() {
+    return id;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public void setId(Long id) {
+    this.id = id;
   }
 
-  public String getLastName() {
-    return lastName;
+  public String getName() {
+    return name;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public Set<Book> getBooks() {
@@ -54,11 +58,6 @@ public class Author {
 
   public void setBooks(Set<Book> books) {
     this.books = books;
-  }
-
-  @Override
-  public String toString() {
-    return "Author [firstName=" + firstName + ", lastName=" + lastName + ", books=" + books + "]";
   }
 
   @Override
@@ -74,9 +73,9 @@ public class Author {
     if (this == obj) return true;
     if (obj == null) return false;
     if (getClass() != obj.getClass()) return false;
-    Author other = (Author) obj;
+    Publisher other = (Publisher) obj;
     if (id == null) {
-      // if (other.id != null) return false;
+      if (other.id != null) return false;
     } else if (!id.equals(other.id)) return false;
     return true;
   }

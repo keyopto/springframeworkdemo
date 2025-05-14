@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,7 +19,14 @@ public class Book {
   private Long nbPages;
 
   @ManyToMany(mappedBy = "books")
-  private Set<Author> authors;
+  private Set<Author> authors = new HashSet<>();
+
+  @ManyToOne private Publisher publisher;
+
+  public Book(String name, Long nbPages) {
+    this.name = name;
+    this.nbPages = nbPages;
+  }
 
   public Long getId() {
     return id;
@@ -41,6 +50,14 @@ public class Book {
 
   public void setNbPages(Long nbPages) {
     this.nbPages = nbPages;
+  }
+
+  public Set<Author> getAuthors() {
+    return authors;
+  }
+
+  public void setAuthors(Set<Author> authors) {
+    this.authors = authors;
   }
 
   @Override
