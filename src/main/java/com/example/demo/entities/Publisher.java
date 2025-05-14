@@ -12,6 +12,8 @@ import java.util.Set;
 @Entity
 public class Publisher {
 
+  public Publisher() {}
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;

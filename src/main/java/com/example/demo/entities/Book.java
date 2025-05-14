@@ -15,13 +15,15 @@ public class Book {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  public Book() {}
+
   private String name;
   private Long nbPages;
 
   @ManyToMany(mappedBy = "books")
   private Set<Author> authors = new HashSet<>();
 
-  @ManyToOne private Publisher publisher;
+  @ManyToOne private Publisher publisher = null;
 
   public Publisher getPublisher() {
     return publisher;

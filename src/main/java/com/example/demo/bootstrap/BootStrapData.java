@@ -29,6 +29,7 @@ public class BootStrapData implements CommandLineRunner {
     Author bob = new Author("bob", "ross");
     Book lol = new Book("lol", (long) 1000);
     Publisher pub = new Publisher("wow", "33 rue du Lion");
+    publisherRepository.save(pub);
 
     bob.getBooks().add(lol);
     lol.getAuthors().add(bob);
